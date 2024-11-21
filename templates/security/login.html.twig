@@ -3,39 +3,108 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{#{ error.messageKey|trans(error.messageData, 'security') }#}</div>
-    {% endif %}
+<div class="form-container">
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail">Email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        <label for="inputPassword">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+        {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+        #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+        <button class="btn btn-lg btn-primary" type="submit">
+            Sign in
+        </button>
+    </form>
+</div>
 
+<style>
+    /* Centre le formulaire */
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Style du formulaire */
+    .form-container form {
+        background: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+        backdrop-filter: blur(10px); /* Effet de flou */
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure semi-transparente */
+    }
+
+    /* Style des labels */
+    .form-container form label {
+        display: block;
+        margin-bottom: 5px;
+        color: #fff; /* Texte blanc */
+    }
+
+    /* Style des champs de saisie */
+    .form-container form input[type="email"],
+    .form-container form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure semi-transparente */
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+        color: #fff; /* Texte blanc */
+    }
+
+    /* Style du bouton de soumission */
+    .form-container form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff; /* Ton bleu */
+        border: none;
+        border-radius: 5px;
+        color: #fff; /* Texte blanc */
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    /* Style du bouton de soumission au survol */
+    .form-container form button:hover {
+        background-color: #0056b3; /* Ton bleu plus foncé */
+    }
+
+    /* Style des messages d'erreur */
+    .form-container form .alert {
+        margin-bottom: 20px;
+        background-color: rgba(255, 0, 0, 0.1); /* Fond semi-transparent rouge */
+        color: #fff; /* Texte blanc */
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
 {% endblock %}
