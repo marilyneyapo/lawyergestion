@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Colab{% endblock %}
+
+{% block body %}
+    <h1>Colab</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ colab.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ colab.Titre }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ colab.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ colab.Prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ colab.Tel }}</td>
+            </tr>
+            <tr>
+                <th>Cel</th>
+                <td>{{ colab.Cel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ colab.Email }}</td>
+            </tr>
+            <tr>
+                <th>Typecolab</th>
+                <td>{{ colab.Typecolab }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_colab_index') }}">back to list</a>
+
+    <a href="{{ path('app_colab_edit', {'id': colab.id}) }}">edit</a>
+
+    {{ include('colab/_delete_form.html.twig') }}
+{% endblock %}

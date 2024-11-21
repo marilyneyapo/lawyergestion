@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Serjuridik{% endblock %}
+
+{% block body %}
+    <h1>Serjuridik</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ serjuridik.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ serjuridik.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ serjuridik.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_serjuridik_index') }}">back to list</a>
+
+    <a href="{{ path('app_serjuridik_edit', {'id': serjuridik.id}) }}">edit</a>
+
+    {{ include('serjuridik/_delete_form.html.twig') }}
+{% endblock %}

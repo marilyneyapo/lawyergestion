@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Fiche Audience</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .header-section .juridiction, .header-section .president {
+            flex: 1;
+            text-align: left;
+        }
+
+        .header-section .juridiction {
+            text-align: left;
+        }
+
+        .header-section .president {
+            text-align: right;
+        }
+
+        /* Container holding the full-width card */
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /* Single card that takes full width */
+        .card {
+            display: block; /* No grid, single column structure */
+            width: 100%; /* Takes up the entire width */
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for card effect */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Styling for each section inside the card */
+        .card div {
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            text-align: center;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="{{ asset('logo/logo_SCPA.png') }}" alt="" />
+    <h1>Fiche d'Audience</h1>
+</header>
+
+<!-- Section Header with Juridiction and President -->
+<div class="header-section">
+    <div class="juridiction">
+        <p><strong>Juridiction :</strong> {{ audience.juridiction }}</p>
+        <p><strong>Chambre :</strong> {{ audience.chambre }}</p>
+    </div>
+    <div class="president">
+        <p><strong>Président :</strong> {{ audience.chambre.president }}</p>
+        <p><strong>Greffiers :</strong> {{ audience.chambre.greffiers|join(', ') }}</p>
+    </div>
+</div>
+
+<!-- Main content in one card divided into 6 sections -->
+<div class="container">
+    <div class="card">
+        <!-- Section 1: Date -->
+        <div>
+            <strong>Date de l'Audience</strong>
+            <p>{{ audience.date|date('d/m/Y') }}</p>
+        </div>
+
+        <!-- Section 2: Dossier -->
+        <div>
+            <strong>Dossier</strong>
+            <p>{{ audience.dossier.numero }}</p>
+        </div>
+
+        <!-- Section 3: Rôle du Client et de l'Adversaire -->
+        <div>
+            <strong>Rôle</strong>
+            <p>Client: {{ audience.dossier.client.nom }} {{ audience.dossier.client.prenom }} / Adversaire: {{ audience.adversaire }}</p>
+        </div>
+
+        <!-- Section 4: Noms des Clients et Adversaires -->
+        <div>
+            <strong>Clients et Adversaires</strong>
+            <p><strong>Client :</strong> {{ audience.dossier.client.nom }} {{ audience.dossier.client.prenom }}</p>
+            <p><strong>Adversaire :</strong> {{ audience.adversaire }}</p>
+        </div>
+
+        <!-- Section 5: Motif de l'Audience -->
+        <div>
+            <strong>Motif de l'Audience</strong>
+            <p>{{ audience.motif }}</p>
+        </div>
+
+        <!-- Section 6: Date de Renvoi -->
+        <div>
+            <strong>Date de Renvoi</strong>
+            <p>{#{ audience.dateRenvoi|date('d/m/Y') }#}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>Adresse du Cabinet</p>
+    <p>123 Rue de l'Exemple, 75000 Paris</p>
+</footer>
+
+</body>
+</html>

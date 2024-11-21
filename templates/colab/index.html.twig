@@ -1,0 +1,45 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Notre Equipe {% endblock %}
+
+{% block body %}
+    <h1>Notre Equipe</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Tel</th>
+                <th>Cel</th>
+                <th>Email</th>
+                <th>Typecolab</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for colab in colabs %}
+            <tr>
+                <td>{{ colab.Titre }}</td>
+                <td>{{ colab.Nom }}</td>
+                <td>{{ colab.Prenom }}</td>
+                <td>{{ colab.Tel }}</td>
+                <td>{{ colab.Cel }}</td>
+                <td>{{ colab.Email }}</td>
+                <td>{{ colab.Typecolab }}</td>
+                <td>
+                    <a href="{{ path('app_colab_show', {'id': colab.id}) }}">show</a>
+                    <a href="{{ path('app_colab_edit', {'id': colab.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_colab_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+easy_admin: 
+  dashboard:
+    controller: App\Controller\Admin\DashboardController
+
+    design:
+      notification:
+        enabled: true
+      assets:
+            js:
+                - 'js/filtrage_chambres.js'

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Colab{% endblock %}
+
+{% block body %}
+    <h1>Create new Colab</h1>
+
+    {{ include('colab/_form.html.twig') }}
+
+    <a href="{{ path('app_colab_index') }}">back to list</a>
+{% endblock %}

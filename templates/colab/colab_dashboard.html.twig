@@ -1,0 +1,210 @@
+{% block title %}Tableau de Bord des Avocats{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM0d4de/c5NfY1dA1fS8W67C5D4/RiS7yHKx1a" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        aside {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #2C3E50;
+            color: white;
+            padding: 20px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        aside h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #ecf0f1;
+        }
+
+        .sidebar-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-menu ul li a i {
+            margin-right: 10px;
+        }
+
+        .sidebar-menu ul li a:hover {
+            color: #3498db;
+        }
+
+        main {
+            margin-left: 250px;
+            padding: 40px;
+            background-color: #ecf0f1;
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.25em;
+            color: #2980b9;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #7f8c8d;
+        }
+
+        .card a {
+            font-size: 1em;
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .welcome-message {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .stat-card h3 {
+            font-size: 1.5em;
+            color: #2980b9;
+        }
+
+        .stat-card .value {
+            font-size: 2.5em;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .stat-card .description {
+            font-size: 1em;
+            color: #7f8c8d;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div style="display: flex; height: 100vh;">
+        {# Sidebar #}
+        <aside>
+            <h3>Menu Principal</h3>
+            <div class="sidebar-menu">
+                <ul>
+                    <li><a href="{{ path('app_client_index') }}"><i class="fas fa-user-friends"></i> Clients</a></li>
+                    <li><a href="{{ path('app_audience') }}"><i class="fas fa-chart-line"></i> Audiences</a></li>
+                    <li><a href="{{ path('app_dossier') }}"><i class="fas fa-folder"></i> Dossiers</a></li>
+                    <li><a href="{{ path('app_colab_clients') }}"><i class="fas fa-user"></i> Mes Clients</a></li>
+                    <li><a href="{#{ path('app_profile') }#}"><i class="fas fa-cogs"></i> Mon Profil</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        {# Main Content #}
+        <main>
+            <h1>Tableau de Bord</h1>
+            <h2 class="welcome-message">
+                {% if colab is not null %}
+                    Bienvenue, Me {{ colab.nom }} {{ colab.prenom }}
+                {% else %}
+                    Bienvenue, visiteur !
+                {% endif %}
+            </h2>
+
+            {# Stats Section #}
+            <section class="stats-container">
+                <div class="stat-card">
+                    <h3>Clients Actuels</h3>
+                    <div class="value">{{ nombreClients }}</div>
+                    <div class="description">Nombre de clients actifs actuellement</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Dossiers Ouverts</h3>
+                    <div class="value">{{ nombreDossiers }}</div>
+                    <div class="description">Nombre total de dossiers ouverts</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Audiences à Venir</h3>
+                    <div class="value">{{ nombreAudiences }}</div>
+                    <div class="description">Prochaines audiences planifiées</div>
+                </div>
+            </section>
+
+            {# Information Cards Section #}
+            <section style="display: flex; gap: 20px; margin-top: 30px;">
+                <div class="card" style="flex: 1;">
+                    <h3>Mes Clients</h3>
+                    <p>Accédez rapidement aux informations de vos clients et gérez vos interactions.</p>
+                    <a href="{{ path('app_client_index') }}">Voir tous les clients</a>
+                </div>
+                <div class="card" style="flex: 1;">
+                    <h3>Mes Audiences</h3>
+                    <p>Suivez vos audiences et analysez les résultats pour mieux comprendre vos clients.</p>
+                    <a href="{{ path('app_audience') }}">Voir toutes les audiences</a>
+                </div>
+                <div class="card" style="flex: 1;">
+                    <h3>Dossiers des Clients</h3>
+                    <p>Consultez et gérez les dossiers de vos clients en toute sécurité.</p>
+                    <a href="{{ path('app_dossier') }}">Voir tous les dossiers</a>
+                </div>
+            </section>
+        </main>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Services Juridiques {% endblock %}
+
+{% block body %}
+    <h1> Nos Services </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for serjuridik in serjuridiks %}
+            <tr>
+                <td>{{ serjuridik.nom }}</td>
+                <td>{{ serjuridik.description }}</td>
+                <td>
+                    <a href="{{ path('app_serjuridik_show', {'id': serjuridik.id}) }}">show</a>
+                    <a href="{{ path('app_serjuridik_edit', {'id': serjuridik.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_serjuridik_new') }}">Create new</a>
+{% endblock %}

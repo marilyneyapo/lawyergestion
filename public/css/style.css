@@ -1,0 +1,391 @@
+    /* Page background */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    overflow-x: hidden; 
+    color: #333;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+        
+}
+
+    /* Header styling */
+header {
+    background-color: #2c3e50; /* Dark blue */
+    padding: 10px;
+    color: white;
+}
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img {
+    max-height: 60px;
+}
+nav .nav-link {
+    color: white;
+    font-weight: 500;
+    margin: 0 10px;
+}
+nav .nav-link:hover {
+    color: #ecf0f1;
+}
+.dropdown-menu {
+    background-color: #2c3e50;
+}
+.dropdown-item {
+    color: #ecf0f1;
+}
+.dropdown-item:hover {
+    background-color: #34495e;
+}
+
+    /* Sidebar styling */
+.sidebar {
+    background-color: #2c3e50;
+    color: white;
+    padding-top: 30px;
+}
+.sidebar a {
+    color: #ecf0f1;
+    font-size: 1.1em;
+    padding: 10px;
+    display: block;
+}
+.sidebar a:hover {
+    background-color: #34495e;
+}
+
+    /* Main content */
+.content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+    /* Footer styling */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+    /* Custom button styling for sidebar toggle */
+.toggle-sidebar {
+    background-color: #2c3e50;
+    color: white;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+    transition: background-color 0.3s ease;
+}
+.toggle-sidebar:hover {
+    background-color: #4f6a85;
+}
+    /* Hero section styling */
+    /* Hero section pour couvrir toute la largeur et la hauteur de l'écran */
+.hero-section {
+    background-image: url('{{ asset("logo/LAWYER.png") }}');
+    background-size: cover;
+    background-position: center;
+    width: 100vw; /* Assure que la section prend toute la largeur */
+    height: 100vh; /* Couvre la hauteur de l'écran */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay pour un effet sombre */
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text h1 {
+    font-size: 2.5em;
+    font-family: 'Georgia', serif;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+    .dropdown-item {
+        transition: color 0.3s, background-color 0.3s;
+    }
+    .dropdown-item:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    /* Style global */
+
+
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(rgba(11, 120, 163, 0.733), rgba(9, 153, 163, 0.856)), url("{{ asset('images/LAWYER.png') }}") no-repeat center center/cover;
+    color: white;
+}
+
+.welcome-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.welcome-section p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.cta-button {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1em;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Keyframes pour les animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Statistics Section */
+.statistics-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.statistics {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.stat-item {
+    width: 200px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f0f8ff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.stat-item h4 {
+    font-size: 2.5em;
+    color: #007bff;
+}
+
+.stat-item p {
+    font-size: 1.1em;
+}
+
+/* Services Section */
+.services-section {
+    padding: 60px 20px;
+    background-color: #f5f7fa;
+    text-align: center;
+}
+
+.services {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.service-item {
+    width: 300px;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+}
+
+.service-item h4 {
+    font-size: 1.5em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #e0f7fa;
+}
+
+.testimonials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.testimonial-item {
+    width: 280px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-style: italic;
+}
+
+.testimonial-item p {
+    font-size: 1.1em;
+}
+
+.testimonial-item h5 {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Team Section */
+.team-section {
+    padding: 60px 20px;
+    background-color: #f5f7fa;
+    text-align: center;
+}
+
+.team {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    text-align: center;
+    width: 200px;
+    margin: 15px;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    transition: transform 0.3s;
+}
+
+.team-member img:hover {
+    transform: scale(1.1);
+}
+
+.team-member h4 {
+    font-size: 1.2em;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 60px 20px;
+    background-color: hsl(214, 81%, 69%);
+    color: white;
+    text-align: center;
+}
+
+.cta-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.cta-section .cta-button {
+    background-color: white;
+    color: #007bff;
+}
+
+.cta-section .cta-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+        
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #2c3e50;
+    color: white;
+    font-weight: bold;
+    }
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+a {
+    color: #010230;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

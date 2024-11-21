@@ -1,0 +1,29 @@
+{% extends 'INDEX.html.twig' %}
+
+
+{% block title %}Inscription{% endblock %}
+
+
+{% block body %}
+    <h1>Inscription</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.titre) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.cel) }}
+        {{ form_row(form.tel) }}
+        {{ form_row(form.plainPassword) }}
+        <button type="submit">S'inscrire</button>
+    {{ form_end(form) }}
+
+    {# Vous pouvez également afficher des messages d'erreur ici si nécessaire #}
+    {% if app.session.flashBag.has('error') %}
+        <div class="alert alert-danger">
+            {% for message in app.session.flashBag.get('error') %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Bienvenue au Cabinet SCPA-SAKHO{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+<section class="welcome-section">
+    <h2>Bienvenue sur notre site !</h2>
+    <p>Nous sommes ravis de vous accueillir au Cabinet SCPA-SAKHO. Notre mission est de vous fournir des services juridiques de qualité adaptés à vos besoins.</p>
+    <a href="#" class="cta-button">Prenez Rendez-vous</a>
+</section>
+
+<!-- Statistiques -->
+<section class="statistics-section">
+    <h3>Nos Chiffres Clés</h3>
+    <div class="statistics">
+        <div class="stat-item">
+            <h4>+500</h4>
+            <p>Clients satisfaits</p>
+        </div>
+        <div class="stat-item">
+            <h4>98%</h4>
+            <p>Taux de réussite</p>
+        </div>
+        <div class="stat-item">
+            <h4>20</h4>
+            <p>Années d'expérience</p>
+        </div>
+        <div class="stat-item">
+            <h4>+50</h4>
+            <p>Experts et collaborateurs</p>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="services-section">
+    <h3>Nos Services</h3>
+    <p>Nous offrons une gamme de services juridiques pour répondre à tous vos besoins, que vous soyez un particulier ou une entreprise.</p>
+    <div class="services">
+        <div class="service-item">
+            <h4>Droit des affaires</h4>
+            <p>Assistance complète pour les entreprises : contrats, litiges, et plus encore.</p>
+        </div>
+        <div class="service-item">
+            <h4>Droit de la famille</h4>
+            <p>Conseils et défense pour les affaires familiales : divorce, succession, etc.</p>
+        </div>
+        <div class="service-item">
+            <h4>Droit du travail</h4>
+            <p>Accompagnement dans les litiges entre employeurs et employés.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Témoignages -->
+<section class="testimonials-section">
+    <h3>Ce que disent nos clients</h3>
+    <div class="testimonials">
+        <div class="testimonial-item">
+            <p>“Le Cabinet SCPA-SAKHO m'a aidé à résoudre un litige complexe avec efficacité et professionnalisme.”</p>
+            <h5>– Jean Dupont</h5>
+        </div>
+        <div class="testimonial-item">
+            <p>“Un service impeccable ! Je recommande fortement leurs services.”</p>
+            <h5>– Marie Curie</h5>
+        </div>
+    </div>
+</section>
+
+<!-- Équipe -->
+<section class="team-section">
+    <h3>Rencontrez notre Équipe</h3>
+    <p>Nos avocats et experts sont là pour vous accompagner dans chaque étape de votre démarche juridique.</p>
+    <div class="team">
+        <div class="team-member">
+            <img src="{{ asset('logo/mtresakho.JPG') }}" alt="Avocat 1">
+            <h4>Maître Sakho</h4>
+            <p>Avocat spécialisé en droit des affaires</p>
+        </div>
+        <div class="team-member">
+            <img src="{{ asset('logo/mtrefofana.jpg') }}" alt="Avocat 2">
+            <h4>Maître FOFANA</h4>
+            <p>Avocat spécialisé en droit de la famille</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA (Call to Action) -->
+<section class="cta-section">
+    <h3>Prêt à défendre vos droits ?</h3>
+    <p>Contactez-nous dès aujourd'hui pour une consultation gratuite avec un de nos avocats experts.</p>
+    <a href="#" class="cta-button">Contactez-nous</a>
+</section>
+
+{% endblock %}

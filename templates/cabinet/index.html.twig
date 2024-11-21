@@ -1,0 +1,44 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Cabinet index{% endblock %}
+
+{% block body %}
+    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Codepostal</th>
+                <th>Tel</th>
+                <th>Fax</th>
+                <th>Logo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cabinet in cabinets %}
+            <tr>
+                <td>{{ cabinet.id }}</td>
+                <td>{{ cabinet.nom }}</td>
+                <td>{{ cabinet.adresse }}</td>
+                <td>{{ cabinet.codepostal }}</td>
+                <td>{{ cabinet.tel }}</td>
+                <td>{{ cabinet.fax }}</td>
+                <td>{{ cabinet.logo }}</td>
+                <td>
+                    <a href="{{ path('app_cabinet_show', {'id': cabinet.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cabinet_new') }}">Create new</a>
+{% endblock %}

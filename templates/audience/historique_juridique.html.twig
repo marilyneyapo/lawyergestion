@@ -1,0 +1,37 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+    <h1>Historique Juridique</h1>
+
+    <!-- Barre de recherche -->
+    <form method="get" action="{{ path('historique_juridique') }}">
+        <input 
+            type="text" 
+            name="search" 
+            placeholder="Nom du client ou numéro de dossier" 
+            value="{{ searchTerm }}"
+        >
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <!-- Affichage des résultats -->
+    {% if searchTerm and (client or audiences) %}
+        {% if client %}
+            <h2>Résultats pour le client : {{ client.nom }} {{ client.prenom }}</h2>
+        {% endif %}
+        <ul>
+            {% for audience in audiences %}
+                <li>
+                    Audience débutée le {{ audience.dateDebut|date('d/m/Y') }}
+                    <ul>
+                        {% for renvoi in audience.historiqueRenvois %}
+                            <li>Renvoi le {{ renvoi.date|date('d/m/Y') }} - Motif : {{ renvoi.motif }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% elseif searchTerm %}
+        <p>Aucun résultat trouvé pour "{{ searchTerm }}".</p>
+    {% endif %}
+{% endblock %}

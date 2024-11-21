@@ -1,0 +1,42 @@
+<html>
+<head>
+    <style>
+    </style>
+</head>
+<body>
+    <h1>Toutes les Audiences</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Conseil</th>
+                <th>Motif</th>
+                <th>Renvois</th>
+                <th>Juridiction</th>
+                <th>Chambre</th>
+                <th>Adversaire</th>
+                <th>Dossier</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for audience in audiences %}
+                <tr>
+                    <td>{{ audience.id }}</td>
+                    <td>{{ audience.date|date('Y-m-d') }}</td>
+                    <td>{{ audience.conseil }}</td>
+                    <td>{{ audience.motif }}</td>
+                    <td>{{ audience.getRenvoisAsString() }}</td>
+                    <td>{{ audience.juridiction.Titre }}</td>
+                    <td>{{ audience.chambre.nom }}</td>
+                    <td>{{ audience.chambre.greffiers|join(', ') }}</td>
+                    <td>{{ audience.chambre.president }}</td>
+                    <td>{{ audience.adversaire.nom }}</td>
+                    <td>{{ audience.dossier.client.nom }}</td>
+                    <td>{{ audience.dossier.numero }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

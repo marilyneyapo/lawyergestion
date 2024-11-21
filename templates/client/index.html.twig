@@ -1,0 +1,46 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Client {% endblock %}
+
+{% block body %}
+    <h1>Liste Clients</h1>
+    
+{# ancienne classe  <table class="table table-striped"> #}
+<table class="table table-striped">
+      <thead>
+        <tr>
+           <th>Code</th>
+                <th>Raisonso</th>
+                <th>Titre</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                
+                <th>actions</th>
+        </tr>
+      </thead>
+      <tbody>
+       {% for client in clients %}
+            <tr>
+                <td>{{ client.code }}</td>
+                <td>{{ client.raisonso }}</td>
+                <td>{{ client.titre }}</td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.prenom }}</td>
+                
+               <td>
+                    <a href="{{ path('app_client_show', {'id': client.id}) }}"class="btn btn-dark">show</a>
+                    
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+
+        
+      </tbody>
+    </table>
+
+{% endblock %}

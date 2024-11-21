@@ -1,0 +1,46 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Confrere index{% endblock %}
+
+{% block body %}
+    <h1>Confrere index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>CodePostal</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Cel</th>
+                <th>Fax</th>
+                <th>Logo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for confrere in confreres %}
+            <tr>
+                <td>{{ confrere.id }}</td>
+                <td>{{ confrere.Nom }}</td>
+                <td>{{ confrere.CodePostal }}</td>
+                <td>{{ confrere.Email }}</td>
+                <td>{{ confrere.Tel }}</td>
+                <td>{{ confrere.Cel }}</td>
+                <td>{{ confrere.Fax }}</td>
+                <td>{{ confrere.Logo }}</td>
+                <td>
+                    <a href="{{ path('app_confrere_show', {'id': confrere.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_confrere_new') }}">Create new</a>
+{% endblock %}

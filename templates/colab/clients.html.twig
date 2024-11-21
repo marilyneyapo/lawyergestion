@@ -1,0 +1,14 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Mes Clients{% endblock %}
+
+{% block body %}
+    <h1>Mes Clients</h1>
+    <ul>
+        {% for client in clients %}
+            <li>{{ client.nom }} {{ client.prenom }}</li>
+        {% else %}
+            <li>Aucun client trouvé pour ce collaborateur.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

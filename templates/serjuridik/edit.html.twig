@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Serjuridik{% endblock %}
+
+{% block body %}
+    <h1>Edit Serjuridik</h1>
+
+    {{ include('serjuridik/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_serjuridik_index') }}">back to list</a>
+
+    {{ include('serjuridik/_delete_form.html.twig') }}
+{% endblock %}

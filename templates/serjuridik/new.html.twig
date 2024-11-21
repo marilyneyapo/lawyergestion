@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Serjuridik{% endblock %}
+
+{% block body %}
+    <h1>Create new Serjuridik</h1>
+
+    {{ include('serjuridik/_form.html.twig') }}
+
+    <a href="{{ path('app_serjuridik_index') }}">back to list</a>
+{% endblock %}

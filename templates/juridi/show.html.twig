@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Juridi{% endblock %}
+
+{% block body %}
+    <h1>Juridi</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ juridi.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ juridi.Titre }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ juridi.Lieu }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ juridi.Commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ juridi.Ville }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_juridi_index') }}">back to list</a>
+
+    <a href="{{ path('app_juridi_edit', {'id': juridi.id}) }}">edit</a>
+
+    {{ include('juridi/_delete_form.html.twig') }}
+{% endblock %}

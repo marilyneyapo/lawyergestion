@@ -1,0 +1,18 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Détails du dossier{% endblock %}
+
+{% block body %}
+    <h1>Détails du Dossier</h1>
+
+    <ul>
+
+        <li><strong>Numéro de Dossier :</strong> {{ dossier.numero }}</li>
+        <li><strong>Nom du Client :</strong> {{ dossier.client.nom }}</li>
+        <li><strong>Prenom du Client :</strong> {{ dossier.client.prenom }}</li>
+
+        <li><strong>Description :</strong> {{ dossier.conclusion }}</li>
+    </ul>
+
+    <a href="{{ path('app_dossier') }}">Retour à la liste des dossiers</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% for item in value %}
+    <div style="margin-bottom: 10px;">
+        <label><strong>Date:</strong></label>
+        <input type="date" value="{{ item.dateRenvoi }}" disabled class="form-control">
+        <label><strong>Motif:</strong></label>
+        <textarea disabled class="form-control">{{ item.motif }}</textarea>
+    </div>
+{% else %}
+    <p>Aucune donnée disponible</p>
+{% endfor %}

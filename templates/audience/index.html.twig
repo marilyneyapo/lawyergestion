@@ -1,0 +1,37 @@
+{# templates/audience/index.html.twig #}
+{% extends 'INDEX.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Audiences</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Client</th>
+                <th>Juridiction</th>
+                <th>Chambre</th>
+                
+
+                <th>Contre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for audience in audiences %}
+                <tr>
+                    <td>{{ audience.date|date('d/m/Y') }}</td>
+                    <td>{{ audience.dossier.numero}}</td>
+                    <td>{{ audience.juridiction }}</td>
+                    <td>{{ audience.chambre }}</td>
+                    <td>{{ audience.adversaire }}</td>
+                    <td>
+                        <a href="{{ path('audience_download', { id: audience.id }) }}" class="btn">
+                            <i class="fas fa-download"></i> 
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% block content %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const addAdversaireBtn = document.getElementById('add-adversaire-btn');
+            const adversaireFields = document.querySelectorAll('.adversaire-field');
+
+            if (addAdversaireBtn) {
+                addAdversaireBtn.addEventListener('click', function (event) {
+                    event.preventDefault(); // Empêche l'action par défaut
+                    adversaireFields.forEach(field => {
+                        field.style.display = field.style.display === 'none' ? 'block' : 'none';
+                    });
+                });
+            }
+        });
+    </script>
+{% endblock %}

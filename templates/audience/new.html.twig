@@ -1,0 +1,15 @@
+
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Create Audience{% endblock %}
+
+{% block body %}
+    <h1>Create Audience</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">Submit</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_audience') }}">Back to the list</a>
+{% endblock %}

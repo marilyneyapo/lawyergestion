@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cabinet d'Avocats{% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('logo/logo_SCPA.ico') }}" type="image/x-icon">
+    
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <style>
+            /* Styles pour la sidebar */
+            .sidebar {
+                height: 100vh; /* Prend toute la hauteur */
+                position: fixed; /* Reste fixe à gauche */
+                top: 0;
+                left: -250px; /* Commence en dehors de l'écran */
+                width: 250px; /* Largeur de la sidebar */
+                background-color: #f8f9fa; /* Couleur de fond */
+                padding: 20px; /* Espacement interne */
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Ombre */
+                transition: left 0.3s ease; /* Animation pour l'ouverture/fermeture */
+                z-index: 1000; /* S'assurer que la sidebar est au-dessus des autres éléments */
+            }
+            .sidebar.open {
+                left: 0; /* Affiche la sidebar */
+            }
+            .content {
+                margin-left: 0; /* Espace pour la sidebar initialement */
+                padding: 20px; /* Espacement interne */
+                transition: margin-left 0.3s ease; /* Animation pour le contenu */
+            }
+            .content.shift {
+                margin-left: 250px; /* Espace pour la sidebar ouverte */
+            }
+            .toggle-sidebar {
+                cursor: pointer; /* Curseur en main pour le bouton */
+                padding: 10px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                position: relative; /* Position par rapport au document */
+                margin: 20px; /* Ajoute un espacement autour du bouton */
+                z-index: 1001; /* Au-dessus de la sidebar */
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="header-content d-flex justify-content-between align-items-center">
+            <div class="logo">
+                <img src="{{ asset('logo/logo_SCPA.png') }}" alt="Logo SCPA-SAKHO" style="max-height: 50px;">
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_serjuridik_index') }}">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">À Propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Connexion
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{path ('app_login')}}">Se connecter</a></li>
+                            <li><a class="dropdown-item" href="{{path ('app_registration')}}">S'inscrire</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    
+    <main class="content" id="mainContent">
+        {% block body %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ "now"|date("Y") }} Cabinet SCPA-SAKHO. Tous droits réservés.</p>
+    </footer>
+
+    {% block javascripts %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+        <script>
+            const toggleButton = document.querySelector('.toggle-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+
+            toggleButton.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+                mainContent.classList.toggle('shift'); // Change le margin du contenu
+            });
+
+
+            
+        </script>
+    {% endblock %}
+</body>
+</html>

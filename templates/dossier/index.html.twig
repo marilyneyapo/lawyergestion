@@ -1,0 +1,28 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Dossiers</h1>
+
+    {% if dossiers is empty %}
+        <p>Aucun dossier trouvé.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Dossier</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dossier in dossiers %}
+                    <tr>
+                        <td>{{ dossier.client }}</td>
+                        <td>{{ dossier.numero }}</td>
+                        <td><a href="{{ path('app_dossier_show', { id: dossier.id }) }}">Voir les détails</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

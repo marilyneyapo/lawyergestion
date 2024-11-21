@@ -1,0 +1,41 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Juridictions{% endblock %}
+
+{% block body %}
+    <h1>Juridictions</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Lieu</th>
+                <th>Commentaire</th>
+                <th>Ville</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for juridi in juridis %}
+            <tr>
+                <td>{{ juridi.id }}</td>
+                <td>{{ juridi.Titre }}</td>
+                <td>{{ juridi.Lieu }}</td>
+                <td>{{ juridi.Commentaire }}</td>
+                <td>{{ juridi.Ville }}</td>
+                <td>
+                    <a href="{{ path('app_juridi_show', {'id': juridi.id}) }}">show</a>
+                    <a href="{{ path('app_juridi_edit', {'id': juridi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_juridi_new') }}">Create new</a>
+{% endblock %}

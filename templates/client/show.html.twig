@@ -1,0 +1,60 @@
+{% extends 'INDEX.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+    <h1>Client</h1>
+
+    <table class="table">
+        <tbody>
+            
+            <tr>
+                <th>Code</th>
+                <td>{{ client.code }}</td>
+            </tr>
+            <tr>
+                <th>Raisonso</th>
+                <td>{{ client.raisonso }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ client.titre }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ client.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ client.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ client.tel }}</td>
+            </tr>
+            <tr>
+                <th>Cel</th>
+                <td>{{ client.cel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ client.email }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ client.fax }}</td>
+            </tr>
+            
+            <tr>
+                <th>Profil</th>
+                <td>{{ client.profil }}</td>
+            </tr>
+            
+            
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_client_index') }}">back to list</a>
+
+
+{% endblock %}

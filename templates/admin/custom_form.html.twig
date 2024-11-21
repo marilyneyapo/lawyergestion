@@ -1,0 +1,33 @@
+{% extends '@EasyAdmin/crud/edit.html.twig' %}
+
+{% block content %}
+    {{ parent() }}
+    
+    <button type="button" id="add-adversaire-btn" class="btn btn-primary">
+        + Ajouter un adversaire
+    </button>
+
+    <!-- Formulaire pour afficher nom et prénom de l'adversaire -->
+    <div class="adversaire-field" style="display: none;">
+        {{ form_row(form.adversaireNom) }}
+        {{ form_row(form.adversairePrenom) }}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const addAdversaireBtn = document.getElementById('add-adversaire-btn');
+            const adversaireFields = document.querySelectorAll('.adversaire-field');
+
+            if (addAdversaireBtn) {
+                addAdversaireBtn.addEventListener('click', function (event) {
+                    event.preventDefault(); // Empêche l'action par défaut
+                    
+                    // Toggle l'affichage des champs
+                    adversaireFields.forEach(field => {
+                        field.style.display = field.style.display === 'none' ? 'block' : 'none';
+                    });
+                });
+            }
+        });
+    </script>
+{% endblock %}
