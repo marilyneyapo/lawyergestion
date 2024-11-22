@@ -1,42 +1,137 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <title>Liste des Audiences</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .audience-container {
+            border: 1px solid #000;
+            padding: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .audience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .audience-header h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .audience-header .date {
+            text-align: right;
+            flex: 1;
+        }
+
+        .audience-details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .audience-details .left, .audience-details .right {
+            flex: 1;
+        }
+
+        .audience-details .left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .audience-details .left div {
+            border: 1px solid #000;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+
+        .audience-details .right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .audience-details .right div {
+            border: 1px solid #000;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+
+        .audience-footer {
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .audience-container {
+                page-break-inside: avoid;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>Toutes les Audiences</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Conseil</th>
-                <th>Motif</th>
-                <th>Renvois</th>
-                <th>Juridiction</th>
-                <th>Chambre</th>
-                <th>Adversaire</th>
-                <th>Dossier</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for audience in audiences %}
-                <tr>
-                    <td>{{ audience.id }}</td>
-                    <td>{{ audience.date|date('Y-m-d') }}</td>
-                    <td>{{ audience.conseil }}</td>
-                    <td>{{ audience.motif }}</td>
-                    <td>{{ audience.getRenvoisAsString() }}</td>
-                    <td>{{ audience.juridiction.Titre }}</td>
-                    <td>{{ audience.chambre.nom }}</td>
-                    <td>{{ audience.chambre.greffiers|join(', ') }}</td>
-                    <td>{{ audience.chambre.president }}</td>
-                    <td>{{ audience.adversaire.nom }}</td>
-                    <td>{{ audience.dossier.client.nom }}</td>
-                    <td>{{ audience.dossier.numero }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+    {% set count = 0 %}
+    {% for audience in audiences %}
+        {% if count % 6 == 0 and count != 0 %}
+            <div class="page-break"></div>
+        {% endif %}
+        <div class="audience-container">
+            <div class="audience-header">
+                <h2>{{ audience.juridiction.Titre }} - {{ audience.chambre.nom }}</h2>
+                <div class="date">Audience du {{ audience.date|date('l d F Y') }}</div>
+            </div>
+            <div class="audience-details">
+                <div class="left">
+                    <div>
+                        <strong>Dossier:</strong> {{ audience.dossier.numero }} <br>
+                        <strong>A.N.:</strong> {{ audience.dossier.numero }}
+                    </div>
+                    <div>
+                        <strong>Client:</strong> {{ audience.dossier.client.nom }}<br>
+                        <strong>C/:</strong> {{ audience.adversaire.nom }}<br>
+                        <strong>Conseil:</strong> {{ audience.conseil }}
+                    </div>
+                </div>
+                <div class="right">
+                    <div>
+                        <strong>Procédure:</strong>  <br>
+                        <strong>Motif précédent:</strong> {{ audience.motif }}
+                    </div>
+                    <div>
+                        <strong>Renvoyée au:</strong> {#{ audience.renvoi.dateRenvoi }#}
+                    </div>
+                </div>
+            </div>
+            <div class="audience-footer">
+                <p>Avocat: </p>
+                <p>Président: {{ audience.chambre.president }}</p>
+                <p>Greffier: {{ audience.chambre.greffiers|join(', ') }}</p>
+            </div>
+        </div>
+        {% set count = count + 1 %}
+    {% endfor %}
 </body>
 </html>

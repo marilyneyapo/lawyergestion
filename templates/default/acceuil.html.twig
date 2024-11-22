@@ -4,6 +4,74 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <style>
+        /* Style pour la section de bienvenue */
+        .welcome-section {
+            text-align: center;
+            padding: 20px;
+            background: none; /* Enlever l'arrière-plan */
+        }
+
+        .welcome-section h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .welcome-section p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+*        }
+
+        /* Style pour la section des services */
+        .services-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .services-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .services-section p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .service-item {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .service-item h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .service-item p {
+            font-size: 1em;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -12,29 +80,6 @@
     <h2>Bienvenue sur notre site !</h2>
     <p>Nous sommes ravis de vous accueillir au Cabinet SCPA-SAKHO. Notre mission est de vous fournir des services juridiques de qualité adaptés à vos besoins.</p>
     <a href="#" class="cta-button">Prenez Rendez-vous</a>
-</section>
-
-<!-- Statistiques -->
-<section class="statistics-section">
-    <h3>Nos Chiffres Clés</h3>
-    <div class="statistics">
-        <div class="stat-item">
-            <h4>+500</h4>
-            <p>Clients satisfaits</p>
-        </div>
-        <div class="stat-item">
-            <h4>98%</h4>
-            <p>Taux de réussite</p>
-        </div>
-        <div class="stat-item">
-            <h4>20</h4>
-            <p>Années d'expérience</p>
-        </div>
-        <div class="stat-item">
-            <h4>+50</h4>
-            <p>Experts et collaborateurs</p>
-        </div>
-    </div>
 </section>
 
 <!-- Services -->
@@ -53,39 +98,6 @@
         <div class="service-item">
             <h4>Droit du travail</h4>
             <p>Accompagnement dans les litiges entre employeurs et employés.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Témoignages -->
-<section class="testimonials-section">
-    <h3>Ce que disent nos clients</h3>
-    <div class="testimonials">
-        <div class="testimonial-item">
-            <p>“Le Cabinet SCPA-SAKHO m'a aidé à résoudre un litige complexe avec efficacité et professionnalisme.”</p>
-            <h5>– Jean Dupont</h5>
-        </div>
-        <div class="testimonial-item">
-            <p>“Un service impeccable ! Je recommande fortement leurs services.”</p>
-            <h5>– Marie Curie</h5>
-        </div>
-    </div>
-</section>
-
-<!-- Équipe -->
-<section class="team-section">
-    <h3>Rencontrez notre Équipe</h3>
-    <p>Nos avocats et experts sont là pour vous accompagner dans chaque étape de votre démarche juridique.</p>
-    <div class="team">
-        <div class="team-member">
-            <img src="{{ asset('logo/mtresakho.JPG') }}" alt="Avocat 1">
-            <h4>Maître Sakho</h4>
-            <p>Avocat spécialisé en droit des affaires</p>
-        </div>
-        <div class="team-member">
-            <img src="{{ asset('logo/mtrefofana.jpg') }}" alt="Avocat 2">
-            <h4>Maître FOFANA</h4>
-            <p>Avocat spécialisé en droit de la famille</p>
         </div>
     </div>
 </section>
