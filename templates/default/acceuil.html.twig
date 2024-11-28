@@ -5,108 +5,101 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        /* Style pour la section de bienvenue */
-        .welcome-section {
-            text-align: center;
-            padding: 20px;
-            background: none; /* Enlever l'arrière-plan */
-        }
+        /* Styles spécifiques à l'accueil */
 
-        .welcome-section h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        .welcome-section p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1em;
-            transition: background-color 0.3s;
-        }
-
-        .cta-button:hover {
-*        }
-
-        /* Style pour la section des services */
-        .services-section {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .services-section h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        .services-section p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .services {
+        /* Structure du fond */
+        .background {
+            background: url('{{ asset('logo/JUSTICE.jpg') }}') no-repeat center center/cover;
+            min-height: 100vh;
+            width: 100%;
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            position: fixed; /* Fixer l'image de fond */
+            top: 0;
+            left: 0;
+            z-index: -1; /* Assurer que le contenu reste au-dessus */
         }
 
-        .service-item {
-            width: 30%;
-            margin-bottom: 20px;
+        /* Overlay sombre pour le contraste */
+        .overlay {
+            background: rgba(0, 0, 0, 0.6); /* Couche sombre */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Au-dessus de l'image de fond */
         }
 
-        .service-item h4 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        /* Contenu centré */
+        .content {
+            position: relative;
+            z-index: 2; /* Au-dessus de l'overlay */
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
 
-        .service-item p {
-            font-size: 1em;
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .content .btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 20px;
+            margin: 0.5rem; 
+        }
+
+        /* Styles pour le header */
+        header {
+            z-index: 10; 
+            position: relative; 
+            margin: 0; 
+            padding: 0; 
+            border: none; 
+        }
+
+        /* Adaptation pour les petits écrans */
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 2rem;
+            } 
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            .content .btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
         }
     </style>
 {% endblock %}
 
 {% block body %}
-
-<section class="welcome-section">
-    <h2>Bienvenue sur notre site !</h2>
-    <p>Nous sommes ravis de vous accueillir au Cabinet SCPA-SAKHO. Notre mission est de vous fournir des services juridiques de qualité adaptés à vos besoins.</p>
-    <a href="#" class="cta-button">Prenez Rendez-vous</a>
-</section>
-
-<!-- Services -->
-<section class="services-section">
-    <h3>Nos Services</h3>
-    <p>Nous offrons une gamme de services juridiques pour répondre à tous vos besoins, que vous soyez un particulier ou une entreprise.</p>
-    <div class="services">
-        <div class="service-item">
-            <h4>Droit des affaires</h4>
-            <p>Assistance complète pour les entreprises : contrats, litiges, et plus encore.</p>
-        </div>
-        <div class="service-item">
-            <h4>Droit de la famille</h4>
-            <p>Conseils et défense pour les affaires familiales : divorce, succession, etc.</p>
-        </div>
-        <div class="service-item">
-            <h4>Droit du travail</h4>
-            <p>Accompagnement dans les litiges entre employeurs et employés.</p>
+    
+    <!-- Arrière-plan -->
+    <div class="background">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Bienvenue au Cabinet d'Avocats</h1>
+            <p>Expertise juridique de haut niveau à votre service.</p>
+            <a href="#services" class="btn btn-dark">Nos Services</a>
+            <a href="#contact" class="btn btn-outline-light">Nous Contacter</a>
         </div>
     </div>
-</section>
-
-<!-- CTA (Call to Action) -->
-<section class="cta-section">
-    <h3>Prêt à défendre vos droits ?</h3>
-    <p>Contactez-nous dès aujourd'hui pour une consultation gratuite avec un de nos avocats experts.</p>
-    <a href="#" class="cta-button">Contactez-nous</a>
-</section>
 
 {% endblock %}
+
+
+
+

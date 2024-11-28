@@ -277,83 +277,9 @@ footer p {
     flex-wrap: wrap;
 }
 
-.testimonial-item {
-    width: 280px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    font-style: italic;
-}
 
-.testimonial-item p {
-    font-size: 1.1em;
-}
 
-.testimonial-item h5 {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #007bff;
-}
 
-/* Team Section */
-.team-section {
-    padding: 60px 20px;
-    background-color: #f5f7fa;
-    text-align: center;
-}
-
-.team {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.team-member {
-    text-align: center;
-    width: 200px;
-    margin: 15px;
-}
-
-.team-member img {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    transition: transform 0.3s;
-}
-
-.team-member img:hover {
-    transform: scale(1.1);
-}
-
-.team-member h4 {
-    font-size: 1.2em;
-    color: #007bff;
-    margin-top: 10px;
-}
-
-/* CTA Section */
-.cta-section {
-    padding: 60px 20px;
-    background-color: hsl(214, 81%, 69%);
-    color: white;
-    text-align: center;
-}
-
-.cta-section p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-.cta-section .cta-button {
-    background-color: white;
-    color: #007bff;
-}
-
-.cta-section .cta-button:hover {
-    background-color: #0056b3;
-    color: white;
-}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -386,6 +312,4 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
-}
+
