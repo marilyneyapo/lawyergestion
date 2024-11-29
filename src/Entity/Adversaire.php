@@ -18,7 +18,7 @@ class Adversaire
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="adversaire")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="adversaires")
      * @ORM\JoinColumn(nullable=false)
      */
     private $client;

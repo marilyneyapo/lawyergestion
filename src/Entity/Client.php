@@ -18,7 +18,10 @@ class Client extends User
      */
     private $code;
 
-    
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $roles_client;
 
 
     /**
@@ -44,10 +47,10 @@ class Client extends User
 
     
     /**
-     * @ORM\OneToOne(targetEntity=Dossier::class, inversedBy="client")
+     * @ORM\OneToOne(targetEntity=Dossier::class, mappedBy="client")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $dossier;
+    private $dossiers;
     
 
     /** 
@@ -56,15 +59,15 @@ class Client extends User
     private $audiences;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Adversaire::class, inversedBy="client")
+     * @ORM\OneToMany(mappedBy="client", targetEntity=Adversaire::class, cascade={"persist", "remove"})
      */
-    private $adversaire; 
+    private $adversaires; 
 
     public function __construct()
     {
         $this->audiences = new ArrayCollection();
-
-
+        $this->adversaires = new ArrayCollection();
+        $this->dossiers = new ArrayCollection();
     }
 
     
@@ -80,16 +83,32 @@ class Client extends User
 
         return $this;
     }
-    
+    public function getRolesClient(): ?string
+{
+    return $this->roles_client;
+}
 
-    public function getAdversaire(): ?Adversaire
+/**
+ * Set the value of roles_client
+ *
+ * @param string $roles_client
+ * @return self
+ */
+public function setRolesClient(string $roles_client): self
+{
+    $this->roles_client = $roles_client;
+
+    return $this;
+}
+
+    public function getAdversaires(): ?Collection
     {
-        return $this->adversaire;
+        return $this->adversaires;
     }
 
-    public function setAdversaire(?Adversaire $adversaire): self
+    public function setAdversaires(?Adversaire $adversaires): self
     {
-        $this->adversaire = $adversaire;
+        $this->adversaires = $adversaires;
 
         return $this;
     }
@@ -138,14 +157,14 @@ class Client extends User
     
     
     
-    public function getDossier(): ?Dossier
+    public function getDossiers(): ?Collection
     {
-        return $this->dossier;
+        return $this->dossiers;
     }
     
-    public function setDossier(?Dossier $dossier): self 
+    public function setDossiers(?Dossier $dossiers): self 
     {
-        $this->dossier = $dossier;
+        $this->dossiers = $dossiers;
 
         return $this;
     }

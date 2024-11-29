@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\DossierRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use App\Entity\Client;
 
 /** 
@@ -24,14 +26,25 @@ class Dossier
     private $client;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany(targetEntity="App\Entity\Conclusion", mappedBy="dossier")
      */
-    private $conclusion;
+    private $conclusions;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $numero;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Procedure", mappedBy="dossier")
+     */
+    private $procedures;
+    
+    public function __construct() {
+        $this->procedures = new ArrayCollection();
+        $this->conclusions = new ArrayCollection();
+
+    }
 
     public function getId(): ?int
     {
@@ -67,14 +80,14 @@ class Dossier
         $this->numero = $firstLetter . $numero;
     }
 
-    public function getConclusion(): ?string
+    public function getConclusions(): ?Collection
     {
-        return $this->conclusion;
+        return $this->conclusions;
     }
 
-    public function setConclusion(string $conclusion): self
+    public function setConclusion(?Conclusion $conclusions): self
     {
-        $this->conclusion = $conclusion;
+        $this->conclusions = $conclusions;
 
         return $this;
     }
@@ -88,6 +101,17 @@ class Dossier
     {
         $this->numero = $numero;
 
+        return $this;
+    }
+    public function getProcedures(): Collection
+    {
+        return $this->procedures;
+    }
+
+    // Setter for procedures (optional)
+    public function setProcedures(Collection $procedures): self
+    {
+        $this->procedures = $procedures;
         return $this;
     }
 

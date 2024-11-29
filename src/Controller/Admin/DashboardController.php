@@ -8,6 +8,7 @@ use App\Entity\Cabinet;
 use App\Entity\Chambre;
 use App\Entity\Client;
 use App\Entity\Colab;
+use App\Entity\Conclusion;
 use App\Entity\Dossier;
 use App\Entity\Juridiction;
 use App\Entity\Services;
@@ -42,10 +43,9 @@ class DashboardController extends AbstractDashboardController
     
         yield MenuItem::section('Gestions', 'fa fa-cogs');
     
-        yield MenuItem::linkToCrud('Clients', 'fa fa-user-tie', Client::class)
-            ->setController(ClientCrudController::class);
+       
     
-            yield MenuItem::subMenu('Audiences', 'fa fa-calendar-check')
+        yield MenuItem::subMenu('Audiences', 'fa fa-calendar-check')
             ->setSubItems([
                 MenuItem::linkToCrud('Voir Audiences', 'fa fa-eye', Audience::class)
                     ->setController(AudienceCrudController::class),
@@ -54,27 +54,35 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToRoute('Historiques Juridiques', 'fa fa-search', 'admin_audience_without_results'),
 
             ]);
+        yield MenuItem::linkToCrud('Adversaires', 'fa fa-user-shield', Adversaire::class)
+            ->setController(AdversaireCrudController::class);
+
+        yield MenuItem::linkToCrud('Clients', 'fa fa-user-tie', Client::class)
+            ->setController(ClientCrudController::class);
+
+        yield MenuItem::linkToCrud('Collaborateurs', 'fa fa-users-cog', Colab::class)
+            ->setController(ColabCrudController::class);
+
+        yield MenuItem::linkToCrud('Chambres', 'fa fa-door-closed', Chambre::class)
+            ->setController(ChambreCrudController::class);
+        
+        yield MenuItem::linkToCrud('Conclusions', 'fa fa-file-signature', Conclusion::class)
+            ->setController(ConclusionCrudController::class);
     
         yield MenuItem::linkToCrud('Dossiers', 'fa fa-folder-open', Dossier::class)
             ->setController(DossierCrudController::class);
+
+        yield MenuItem::linkToCrud('Juridictions', 'fa fa-gavel', Juridiction::class)
+            ->setController(JuridictionCrudController::class);
     
-        yield MenuItem::linkToCrud('Collaborateurs', 'fa fa-users-cog', Colab::class)
-            ->setController(ColabCrudController::class);
     
         yield MenuItem::linkToCrud('Services Juridiques', 'fa fa-balance-scale', Services::class)
             ->setController(ServicesCrudController::class);
     
-        yield MenuItem::linkToCrud('Adversaires', 'fa fa-user-shield', Adversaire::class)
-            ->setController(AdversaireCrudController::class);
-    
-        yield MenuItem::linkToCrud('Juridictions', 'fa fa-gavel', Juridiction::class)
-            ->setController(JuridictionCrudController::class);
-    
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user-cog', User::class)
             ->setController(UserCrudController::class);
     
-        yield MenuItem::linkToCrud('Chambres', 'fa fa-door-closed', Chambre::class)
-            ->setController(ChambreCrudController::class);
+        
     }
     
 }
